@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Web
   class BulletinsController < ApplicationController
     def index
@@ -11,12 +13,13 @@ module Web
     def create
       @bulletin = Bulletin.new(bulletin_params)
       @bulletin.user_id = 1
-      unless @bulletin.save
-        render :new
-      end
+      return if @bulletin.save
+
+      render :new
     end
 
     private
+
     def bulletin_params
       params.require(:bulletin).permit(:title, :description, :category_id, :image)
     end

@@ -1,4 +1,13 @@
 require: rubocop-rails
 
+AllCops:
+  Exclude:
+    - 'config/**/*.rb'
+    - 'db/**/*.rb'
+    - 'bin/**/*'
+
 Style/Documentation:
+  Enabled: false
+
+Rails/HasManyOrHasOneDependent:
   Enabled: false
