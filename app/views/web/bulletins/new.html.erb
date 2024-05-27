@@ -1,22 +1,9 @@
 <h3>Add bulletin</h3>
 
-<%= form_with model: @bulletin do |f| %>
-  <p>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </p>
-
-  <p>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </p>
-
-  <p>
-    <%= f.collection_select :category_id, Category.order(:name), :id, :name%>
-  </p>
-
-  <p>
-    <%= f.file_field :image, data: { max_file_size: 5.megabytes} %>
-  </p>
-  <p><%= f.submit %></p>
+<%= simple_form_for @bulletin do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description, as: :text  %>
+  <%= f.input :category_id, label: 'Category', collection: Category.all %>
+  <%= f.file_field :image %>
+  <p><%= f.button :submit %></p>
 <% end %>

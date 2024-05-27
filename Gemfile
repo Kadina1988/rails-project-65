@@ -68,3 +68,4 @@ end
 gem 'omniauth-github', '~> 2.0.0'
 gem "omniauth-rails_csrf_protection"
 gem 'active_storage_validations'
+gem 'simple_form'

@@ -1,0 +1,9 @@
+<nav>
+  <%= link_to 'Доска объявлений', root_path %>
+  <% if signed_in? %>
+    <%= link_to 'Добавить', new_bulletin_path%>
+    <%= link_to 'Выйти'%>
+  <% else %>
+    <%= button_to 'Войти', '/auth/github', data: { turbo: false } %>
+  <% end %>
+</nav>

@@ -11,7 +11,6 @@ module Web
     def create
       @bulletin = Bulletin.new(bulletin_params)
       @bulletin.user_id = 1
-      binding.irb
       unless @bulletin.save
         render :new
       end
