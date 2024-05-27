@@ -1,0 +1,4 @@
+watch_image:
+  name: watch
+  record: watch (Bulletin)
+  blob: watch_image_blob
