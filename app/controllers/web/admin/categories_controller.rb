@@ -2,23 +2,25 @@
 
 module Web
   module Admin
-    class CategoriesController < ApplicationController
+    class CategoriesController < Admin::ApplicationController
       before_action :find_category, only: %i[edit update destroy]
 
       def index
         @categories = Category.all
+        authorize @categories
       end
 
       def new
         @category = Category.new
+        authorize @category
       end
 
       def create
         @category = Category.new(category_params)
-
+        authorize @category
         if @category.save
           redirect_to admin_categories_path
-          flash[:notice] = 'Категория было успшно создана'
+          flash[:notice] = 'Категория было успешно создана'
         else
           render :new, status: :unprocessable_entity
         end
@@ -50,6 +52,7 @@ module Web
 
       def find_category
         @category = Category.find(params[:id])
+        authorize @category
       end
 
       def category_params

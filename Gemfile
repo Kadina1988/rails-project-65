@@ -70,4 +70,5 @@ end
 gem 'active_storage_validations'
 gem 'omniauth-github', '~> 2.0.0'
 gem 'omniauth-rails_csrf_protection'
+gem 'pundit', github: 'varvet/pundit'
 gem 'simple_form'

@@ -10,8 +10,9 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
   <%= render 'layouts/share/nav' %>
-  <%= render 'layouts/share/flash' %>
   <body>
+    <%= render 'web/admin/layouts/share/size_nav' %>
+    <%= render 'layouts/share/flash' %>
     <%= yield %>
   </body>
 </html>
