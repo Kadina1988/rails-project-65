@@ -11,11 +11,9 @@ module Web
     end
 
     def create
-      @bulletin = Bulletin.new(bulletin_params)
-      @bulletin.user_id = 1
-      return if @bulletin.save
-
-      render :new
+      @bulletin = Bulletin.new(bulletin_params.merge!(user_id: @current_user.id))
+      binding.irb
+      @bulletin.save
     end
 
     private
