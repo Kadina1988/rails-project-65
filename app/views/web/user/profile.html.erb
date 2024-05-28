@@ -1,0 +1,26 @@
+<h3>Мои объявления</h3>
+
+<table>
+  <tr>
+    <th>Название</th>
+    <th>Состояние</th>
+    <th>Дата создания</th>
+    <th colspan="4">Действия</th>
+  </tr>
+  <% @bulletins.each do |bulletin| %>
+    <tr>
+      <td><%= bulletin.title %></td>
+      <td><%= bulletin.aasm_state%></td>
+      <td>time</td>
+      <td>
+        <%= link_to 'Показать', bulletin_path(bulletin.id) %>
+        <%= link_to 'Редактировать', edit_bulletin_path(bulletin.id) %>
+        <%= link_to 'На модерацию', to_moderate_path(bulletin.id),
+          data: {turbo_method: :patch} unless bulletin.under_moderation? || bulletin.archived? %>
+
+        <%= link_to 'Архивировать', to_archive_path(bulletin.id),
+          data: {turbo_method: :patch, turbo_confirm: 'Подтвердить архивацию'} unless bulletin.archived? %>
+      </td>
+    </tr>
+  <% end %>
+</table>
