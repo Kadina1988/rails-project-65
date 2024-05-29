@@ -11,7 +11,7 @@
     <tr>
       <td><%= bulletin.title %></td>
       <td><%= bulletin.aasm_state%></td>
-      <td>time</td>
+      <td><%= distance_of_time_in_words(Time.now, bulletin.created_at) %></td>
       <td>
         <%= link_to 'Показать', bulletin_path(bulletin.id) %>
         <%= link_to 'Редактировать', edit_bulletin_path(bulletin.id) %>

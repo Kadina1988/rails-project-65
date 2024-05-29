@@ -1,2 +1,25 @@
 <h3>Объявления</h3>
 
+<table>
+  <tr>
+    <th>Название</th>
+    <th>Состояние</th>
+    <th>Дата создания</th>
+    <th colspan="2">Действия</th>
+  </tr>
+  <% @bulletins.each do |bulletin| %>
+    <tr>
+      <td><%= bulletin.title %></td>
+      <td><%= bulletin.aasm_state %></td>
+      <td><%= distance_of_time_in_words(Time.now, bulletin.created_at) %></td>
+      <td>
+        <%= link_to 'Показать', bulletin_path(bulletin.id) %>
+        <%= link_to 'Архивировать', admin_archive_path(bulletin.id), data: {
+                                                                             turbo_method: :patch,
+                                                                             turbo_confirm: 'Подтвердить архивацию'
+                                                                            }
+        %>
+      </td>
+    </tr>
+  <% end %>
+</table>

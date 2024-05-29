@@ -12,9 +12,10 @@ Rails.application.routes.draw do
 
     resources :bulletins, except: [:destroy, :index]
 
-      namespace :admin do
+    namespace :admin do
       resources :categories, only: %i[index new create edit update destroy]
       resources :bulletins, only: %i[index]
+      patch 'bulletins/:id/archive', to: 'bulletins#archive', as: :archive
     end
 
   end
