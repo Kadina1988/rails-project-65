@@ -14,10 +14,9 @@
       <td><%= distance_of_time_in_words(Time.now, bulletin.created_at) %></td>
       <td>
         <%= link_to 'Показать', bulletin_path(bulletin.id) %>
-        <%= link_to 'Архивировать', admin_archive_path(bulletin.id), data: {
-                                                                             turbo_method: :patch,
-                                                                             turbo_confirm: 'Подтвердить архивацию'
-                                                                            }
+        <%= link_to 'Архивировать', admin_archive_path(bulletin.id),
+          data: {turbo_method: :patch, turbo_confirm: 'Подтвердить архивацию'} unless bulletin.archived?
+
         %>
       </td>
     </tr>
