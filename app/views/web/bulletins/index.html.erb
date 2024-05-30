@@ -1,1 +1,17 @@
 <h3>Объявления</h3>
+
+<%= search_form_for @q do |f| %>
+  <%= f.label 'Поиск по названию' %>
+  <%= f.search_field :title_cont %>
+
+  <%= f.label 'Поиск по категории' %>
+  <%=
+    f.select :category_id_eq,
+    options_from_collection_for_select(Category.all, 'id', 'name'), include_blank: true
+  %>
+  <%= f.submit %>
+<% end %>
+
+<% @bulletins.each do |b| %>
+<p><%= b.title %></p>
+<% end %>

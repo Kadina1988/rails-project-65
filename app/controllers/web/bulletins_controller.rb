@@ -4,7 +4,9 @@ module Web
   class BulletinsController < ApplicationController
     before_action :find_bulletin, only: %i[show edit update to_moderate archive]
     def index
-      @bulletins = Bulletin.first_new
+      # debugger
+      @q = Bulletin.ransack(params[:q])
+      @bulletins = @q.result
     end
 
     def new

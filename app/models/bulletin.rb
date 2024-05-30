@@ -41,4 +41,16 @@ class Bulletin < ApplicationRecord
       transitions from: :under_moderation, to: :published
     end
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    [
+      "title", "aasm_state", "category_id", "created_at",
+      "description", "id", "id_value", "updated_at", "user_id"
+    ]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["category", "image_attachment", "image_blob", "user"]
+  end
+
 end

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     patch 'bulletins/:id/to_moderate', to: 'bulletins#to_moderate', as: :to_moderate
     patch 'bulletins/:id/archive', to: 'bulletins#archive', as: :to_archive
 
-    resources :bulletins, except: [:destroy, :index]
+    resources :bulletins, except: [:destroy]
 
     namespace :admin do
       resources :categories, only: %i[index new create edit update destroy]
