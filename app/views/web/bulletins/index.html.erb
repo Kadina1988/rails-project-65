@@ -7,7 +7,8 @@
   <%= f.label 'Поиск по категории' %>
   <%=
     f.select :category_id_eq,
-    options_from_collection_for_select(Category.all, 'id', 'name'), include_blank: true
+    options_from_collection_for_select(Category.all, 'id', 'name'),
+      include_blank: true
   %>
   <%= f.submit %>
 <% end %>

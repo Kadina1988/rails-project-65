@@ -1,6 +1,16 @@
 <h3>Мои объявления</h3>
 
-<%= render 'shared/search_form' %>
+<%= search_form_for @b do |f| %>
+  <%= f.label :title %>
+  <%= f.search_field :title_cont %>
+
+  <%= f.label :aasm %>
+  <%= f.select :aasm_state_eq,
+    options_from_collection_for_select(Bulletin.aasm.events.map(&:name), 'name', 'name'),
+      include_blank: true
+  %>
+  <%= f.submit %>
+<% end %>
 
 <table>
   <tr>
@@ -9,7 +19,7 @@
     <th>Дата создания</th>
     <th colspan="4">Действия</th>
   </tr>
-  <% @bulletins.each do |bulletin| %>
+  <% @bull.each do |bulletin| %>
     <tr>
       <td><%= bulletin.title %></td>
       <td><%= bulletin.aasm_state%></td>
