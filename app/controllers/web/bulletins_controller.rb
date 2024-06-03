@@ -4,13 +4,10 @@ module Web
   class BulletinsController < ApplicationController
     before_action :find_bulletin, only: %i[show edit update to_moderate archive]
     def index
-<<<<<<< HEAD
       @q = Bulletin.ransack(params[:q])
-      @bulletins = @q.result
-=======
-      bulletins = Bulletin.limit(25)
+      found_bulletins = @q.result
+      bulletins = found_bulletins.limit(25)
       bulletins_pagination(bulletins)
->>>>>>> kaminary
     end
 
     def new

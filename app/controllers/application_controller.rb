@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     current_user.present?
   end
 
-  def pagination(list)
+  def bulletins_pagination(list)
     if params[:page].nil? || params[:page] == 1
       @bulletins = list.page(1)
     else

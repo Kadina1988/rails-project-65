@@ -6,4 +6,7 @@
   <% else %>
     <%= button_to 'Войти', '/auth/github', data: { turbo: false } %>
   <% end %>
+  <% if @current_user.admin? %>
+    <%= link_to 'Админка', admin_root_path %>
+  <% end %>
 </nav>
