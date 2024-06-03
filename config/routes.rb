@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   scope module: 'web' do
     post 'auth/:provider', to: 'auth#request', as: :auth_request
     get 'auth/:provider/callback', to: 'auth#callback', as: :callback_auth
+    get 'auth/sing_out', to: 'auth#sign_out', as: :sign_out
     get 'profile', to: 'user#profile'
     patch 'bulletins/:id/to_moderate', to: 'bulletins#to_moderate', as: :to_moderate
     patch 'bulletins/:id/archive', to: 'bulletins#archive', as: :to_archive

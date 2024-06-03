@@ -1,6 +1,6 @@
 <h3>Мои объявления</h3>
 
-<%= search_form_for @b do |f| %>
+<%= search_form_for @q, url: profile_url do |f| %>
   <%= f.label :title %>
   <%= f.search_field :title_cont %>
 
@@ -28,7 +28,7 @@
         <%= link_to 'Показать', bulletin_path(bulletin.id) %>
         <%= link_to 'Редактировать', edit_bulletin_path(bulletin.id) %>
         <%= link_to 'На модерацию', to_moderate_path(bulletin.id),
-          data: {turbo_method: :patch} unless bulletin.under_moderation? || bulletin.archived? %>
+          data: {turbo_method: :patch} unless bulletin.under_moderation? || bulletin.archived? || bulletin.published? %>
 
         <%= link_to 'Архивировать', to_archive_path(bulletin.id),
           data: {turbo_method: :patch, turbo_confirm: 'Подтвердить архивацию'} unless bulletin.archived? %>

@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include Pundit
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   helper_method :signed_in?
   before_action :current_user
 
@@ -18,5 +21,12 @@ class ApplicationController < ActionController::Base
     else
       @bulletins = list.page(params[:page])
     end
+  end
+
+  private
+
+  def user_not_authorized
+    flash[:alert] = 'Вам необходимо войти в систему или зарегистрироваться для выполнения этого действия'
+    redirect_to root_path
   end
 end

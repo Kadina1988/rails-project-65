@@ -10,6 +10,11 @@ module Web
       redirect_to root_path
     end
 
+    def sign_out
+      session[:user_id] = nil
+      redirect_to root_path
+    end
+
     private
 
     def user_info

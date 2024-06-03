@@ -4,7 +4,7 @@ module Web
   class BulletinsController < ApplicationController
     before_action :find_bulletin, only: %i[show edit update to_moderate archive]
     def index
-      @q = Bulletin.ransack(params[:q])
+      @q = Bulletin.where(aasm_state: 'published').ransack(params[:q])
       found_bulletins = @q.result
       bulletins = found_bulletins.limit(25)
       bulletins_pagination(bulletins)
@@ -12,18 +12,27 @@ module Web
 
     def new
       @bulletin = Bulletin.new
+      authorize @bulletin
     end
 
     def create
       @bulletin = Bulletin.new(bulletin_params.merge!(user_id: @current_user.id))
-      @bulletin.save
+      authorize @bulletin
+      if @bulletin.save
+        redirect_to profile_path
+      else
+        render :new, status: :unprocessible_entity
+      end
     end
 
-    def show; end
+    def show;end
 
-    def edit; end
+    def edit
+      authorize @bulletin
+    end
 
     def update
+      authorize @bulletin
       if @bulletin.update(bulletin_params)
         redirect_to profile_path
         flash[:notice] = 'Объявление было обновлено'
@@ -34,12 +43,14 @@ module Web
 
     def to_moderate
       @bulletin.to_moderate!
+      authorize @bulletin
       redirect_to profile_path
       flash[:notice] = 'Объявление отправлено на модерацию'
     end
 
     def archive
       @bulletin.archive!
+      authorize @bulletin
       redirect_to profile_path
       flash[:notice] = 'Объявление отправилось в архив'
     end
