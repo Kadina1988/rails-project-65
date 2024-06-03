@@ -17,3 +17,5 @@
 <% @bulletins.each do |b| %>
 <p><%= b.title %></p>
 <% end %>
+
+<%= paginate @bulletins %>

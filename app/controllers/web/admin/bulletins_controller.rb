@@ -4,7 +4,8 @@ module Web
   module Admin
     class BulletinsController < Admin::ApplicationController
       def index
-        @bulletins = Bulletin.first_new
+        bulletins = Bulletin.first_new
+        bulletins_pagination(bulletins)
         authorize @bulletins
       end
 
