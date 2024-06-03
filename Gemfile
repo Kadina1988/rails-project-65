@@ -67,6 +67,7 @@ group :test do
   gem 'selenium-webdriver'
 end
 
+gem 'kaminari'
 gem 'active_storage_validations'
 gem 'omniauth-github', '~> 2.0.0'
 gem 'omniauth-rails_csrf_protection'

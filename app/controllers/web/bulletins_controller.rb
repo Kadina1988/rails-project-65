@@ -4,7 +4,8 @@ module Web
   class BulletinsController < ApplicationController
     before_action :find_bulletin, only: %i[show edit update to_moderate archive]
     def index
-      @bulletins = Bulletin.first_new
+      bulletins = Bulletin.limit(25)
+      bulletins_pagination(bulletins)
     end
 
     def new
