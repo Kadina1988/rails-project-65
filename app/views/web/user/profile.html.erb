@@ -6,11 +6,12 @@
 
   <%= f.label :aasm %>
   <%= f.select :aasm_state_eq,
-    options_from_collection_for_select(Bulletin.aasm.events.map(&:name), 'name', 'name'),
+    options_from_collection_for_select(Bulletin.aasm.states.map(&:name), 'name', 'name'),
       include_blank: true
   %>
   <%= f.submit %>
 <% end %>
+<%= link_to 'Сброс', profile_path %>
 
 <table>
   <tr>
