@@ -21,7 +21,7 @@ module Web
       if @bulletin.save
         redirect_to profile_path
       else
-        render :new, status: :unprocessible_entity
+        render :new, status: :unprocessable_entity
       end
     end
 
