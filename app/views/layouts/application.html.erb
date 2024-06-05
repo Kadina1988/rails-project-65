@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>RailsProject65</title>
+
+    <meta name="turbo-prefetch" content="false">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -9,9 +11,11 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
-  <%= render 'layouts/share/nav' %>
-  <%= render 'layouts/share/flash' %>
-  <body>
-    <%= yield %>
-  </body>
+  <div class="text-center">
+    <%= render 'layouts/share/nav' %>
+    <%= render 'layouts/share/flash' %>
+    <body class="border">
+      <%= yield %>
+    </body>
+  </div>
 </html>

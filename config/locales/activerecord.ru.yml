@@ -8,13 +8,16 @@ ru:
         description: 'Описание'
         category_id: 'Категория'
 
+      category:
+        name: 'Название'
+
     errors:
       models:
         bulletin:
           attributes:
             title:
-              too_short:  'недостаточной длины(не может быть меньше 3 символов)'
-              too_long:  'слишком длинный (не может быть больше 50 символов)'
+              too_short: 'недостаточной длины(не может быть меньше 3 символов)'
+              too_long: 'слишком длинный (не может быть больше 50 символов)'
               blank:  'не может быть пустым'
             description:
               blank: "не может быть пустым"
@@ -35,4 +38,5 @@ ru:
       x_days:
         one: '1 день'
         few: "%{count} дня"
+        many: "%{count} дней"
 

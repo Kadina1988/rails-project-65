@@ -16,11 +16,11 @@ class ApplicationController < ActionController::Base
   end
 
   def bulletins_pagination(list)
-    if params[:page].nil? || params[:page] == 1
-      @bulletins = list.page(1)
-    else
-      @bulletins = list.page(params[:page])
-    end
+    @bulletins = if params[:page].nil? || params[:page] == 1
+                   list.page(1)
+                 else
+                   list.page(params[:page])
+                 end
   end
 
   private

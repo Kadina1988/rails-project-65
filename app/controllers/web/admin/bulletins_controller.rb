@@ -6,7 +6,9 @@ module Web
       before_action :find_bulletin, only: %i[archive publish reject]
 
       def index
-        bulletins = Bulletin.first_new
+        @q = Bulletin.first_new.ransack(params[:q])
+        found_bulletins = @q.result
+        bulletins = found_bulletins.limit(25)
         bulletins_pagination(bulletins)
         authorize @bulletins
       end

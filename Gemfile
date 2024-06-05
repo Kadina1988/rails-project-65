@@ -67,11 +67,12 @@ group :test do
   gem 'selenium-webdriver'
 end
 
-gem 'kaminari'
+gem 'aasm', '~> 4.10'
 gem 'active_storage_validations'
+gem 'kaminari'
 gem 'omniauth-github', '~> 2.0.0'
 gem 'omniauth-rails_csrf_protection'
 gem 'pundit', github: 'varvet/pundit'
-gem 'simple_form'
-gem 'aasm', '~> 4.10'
+gem 'rails-i18n'
 gem 'ransack'
+gem 'simple_form'

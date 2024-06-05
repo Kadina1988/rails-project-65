@@ -6,7 +6,7 @@ class Bulletin < ApplicationRecord
   has_one_attached :image
 
   validates :category_id, presence: true
-  validates :title, presence: true, length: {minimum: 3,  maximum: 50 }
+  validates :title, presence: true, length: { minimum: 3, maximum: 50 }
   validates :description, presence: true, length: { maximum: 1000 }
   # validates :image, presence: true
   # validates :image, attached: true, content_type: %i[png jpg jpeg],
@@ -25,7 +25,7 @@ class Bulletin < ApplicationRecord
     state :archived
 
     event :archive do
-      transitions from: [:draft, :under_moderation, :published, :rejected], to: :archived
+      transitions from: %i[draft under_moderation published rejected], to: :archived
     end
 
     event :to_moderate do
@@ -41,15 +41,14 @@ class Bulletin < ApplicationRecord
     end
   end
 
-  def self.ransackable_attributes(auth_object = nil)
-    [
-      "title", "aasm_state", "category_id", "created_at",
-      "description", "id", "id_value", "updated_at", "user_id"
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[
+      title aasm_state category_id created_at
+      description id id_value updated_at user_id
     ]
   end
 
-  def self.ransackable_associations(auth_object = nil)
-    ["category", "image_attachment", "image_blob", "user"]
+  def self.ransackable_associations(_auth_object = nil)
+    %w[category image_attachment image_blob user]
   end
-
 end

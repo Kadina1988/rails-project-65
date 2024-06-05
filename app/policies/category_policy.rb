@@ -9,26 +9,26 @@ class CategoryPolicy
   end
 
   def index?
-    @current_user && @user.admin?
+    @user&.admin?
   end
 
   def new?
-    @current_user && @user.admin?
+    @user&.admin?
   end
 
   def create?
-    @current_user && @user.admin?
+    @user&.admin?
   end
 
   def edit?
-    @current_user && @user.admin?
+    @user&.admin?
   end
 
   def update?
-    @current_user && @user.admin?
+    @user&.admin?
   end
 
   def destroy?
-    @current_user && @user.admin?
+    @user&.admin?
   end
 end

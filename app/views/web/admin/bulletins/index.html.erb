@@ -1,4 +1,18 @@
 <h3>Объявления</h3>
+<div>
+<%= search_form_for @q, url: admin_bulletins_url do |f| %>
+  <%= f.label 'По названию' %>
+  <%= f.search_field :title_cont %>
+
+  <%= f.label "По состоянию" %>
+  <%= f.select :aasm_state_eq,
+    options_from_collection_for_select(Bulletin.aasm.states.map(&:name), 'name', 'name'),
+      include_blank: true
+  %>
+  <%= f.submit %>
+<% end %>
+<%= link_to 'Сброс', admin_bulletins_path %>
+</div>
 
 <table>
   <tr>

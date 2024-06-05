@@ -7,19 +7,19 @@ class BulletinPolicy
   end
 
   def index?
-    @user && @user.admin?
+    @user&.admin?
   end
 
   def on_moderation?
-    @user && @user.admin?
+    @user&.admin?
   end
 
   def publish?
-    @user && @user.admin?
+    @user&.admin?
   end
 
   def reject
-    @user && @user.admin?
+    @user&.admin?
   end
 
   def new?
