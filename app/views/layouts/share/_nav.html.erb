@@ -1,11 +1,11 @@
-<nav class="navbar border-bottom ">
+<nav class="navbar  border-bottom ">
   <%= link_to 'Доска объявлений', root_path, class: 'navbar-brand' %>
   <% if signed_in? %>
     <%= link_to 'Мои объявления', profile_path %>
-    <%= link_to 'Добавить', new_bulletin_path %>
+    <%= link_to 'Добавить', new_bulletin_path, class: 'add-bulletin' %>
     <%= link_to 'Админка', admin_root_path if @current_user && @current_user.admin? %>
     <%= link_to 'Выйти', sign_out_path %>
   <% else %>
-    <%= button_to 'Войти', '/auth/github', data: { turbo: false } %>
+    <%= button_to 'Войти', '/auth/github', data: { turbo: false }, class: 'signin' %>
   <% end %>
 </nav>

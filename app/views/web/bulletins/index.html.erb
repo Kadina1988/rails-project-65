@@ -1,18 +1,22 @@
-<h3>Объявления</h3>
+ <h3 class="border-bottom">Объявления</h3>
 
 <%= search_form_for @q do |f| %>
-  <%= f.label 'Поиск по названию' %>
-  <%= f.search_field :title_cont %>
-
-  <%= f.label 'Поиск по категории' %>
-  <%=
-    f.select :category_id_eq,
-    options_from_collection_for_select(Category.all, 'id', 'name'),
-      include_blank: true
-  %>
+  <p>
+    <%= f.search_field :title_cont %>
+    <%=
+      f.select :category_id_eq,
+      options_from_collection_for_select(Category.all, 'id', 'name'),
+        include_blank: true
+    %>
   <%= f.submit %>
+  <%= link_to 'Сброс', root_path %>
+  </p>
+
+  <p>
+    <%= f.label 'Поиск по названию', class: 'search-lable' %>
+    <%= f.label 'Поиск по категории', class: 'search-lable' %>
+  </p>
 <% end %>
-<%= link_to 'Сброс', root_path %>
 
 <% @bulletins.each do |b| %>
 <p><%= b.title %></p>
