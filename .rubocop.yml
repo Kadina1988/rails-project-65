@@ -11,3 +11,6 @@ Style/Documentation:
 
 Rails/HasManyOrHasOneDependent:
   Enabled: false
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
