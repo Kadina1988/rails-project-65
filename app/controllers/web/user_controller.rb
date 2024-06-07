@@ -4,7 +4,7 @@ module Web
   class UserController < ApplicationController
     def profile
       @q = @current_user.bulletins.ransack(params[:q])
-      @bull = @q.result
+      @bull = @q.result.first_new
     end
   end
 end

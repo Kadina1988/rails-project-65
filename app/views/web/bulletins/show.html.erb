@@ -1,3 +1,6 @@
-<h3><%= @bulletin.title %></h3>
-<h6><%= @bulletin.user.name %></h6>
-<p><%= image_tag @bulletin.image.variant(resize: "10x10") %></p>
+<h3 class="border-bottom"><%= @bulletin.title %></h3>
+<h6 class="creator"><%= @bulletin.user.name %></h6>
+<p class="image"><%= image_tag(@bulletin.image, width: "20%") %></p>
+
+<p class="description"><%= @bulletin.description %></p>
+
